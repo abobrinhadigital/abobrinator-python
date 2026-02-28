@@ -1,0 +1,10 @@
+# Chaves e Segredos
+.env
+pollux_instructions.txt
+
+# Ambiente Virtual (Para não subir 50MB de lixo pro GitHub)
+venv/
+
+# Cache do Python (Arquivos temporários que o Python cria)
+__pycache__/
+*.py[cod]
