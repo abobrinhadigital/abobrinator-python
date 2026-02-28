@@ -73,7 +73,7 @@ def processar_arquivo(filepath, is_rascunho):
         # 4. Movimentação da Transcrição
         if not is_rascunho:
             dest_asset = os.path.join(cfg["TRANSCRIPTION_DIR"], f"{nome_base}.txt")
-            shutil.move(filepath, dest_asset)
+            shutil.copy2(filepath, dest_asset)
             print(f"[ABOBRINATOR] Transcrição renomeada para: {nome_base}.txt e movida.")
         else:
             print(f"[ABOBRINATOR] Como é rascunho, o .txt original não foi movido.")
