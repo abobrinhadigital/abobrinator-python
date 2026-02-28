@@ -70,14 +70,27 @@ def processar_arquivo(filepath, is_rascunho):
         
         print(f"[ABOBRINATOR] SUCESSO! Post salvo em: {md_filepath}")
 
-        # 4. Movimentação da Transcrição
+        # 4. Cópia da Transcrição (Simetria Absoluta)
         if not is_rascunho:
-            dest_asset = os.path.join(cfg["TRANSCRIPTION_DIR"], f"{nome_base}.txt")
-            shutil.copy2(filepath, dest_asset)
-            print(f"[ABOBRINATOR] Transcrição renomeada para: {nome_base}.txt e movida.")
+            pasta_destino = cfg["TRANSCRIPTION_DIR"]
         else:
-            print(f"[ABOBRINATOR] Como é rascunho, o .txt original não foi movido.")
+            pasta_destino = cfg["DRAFTS_DIR"]
+
+        # Garante que a pasta de destino existe
+        os.makedirs(pasta_destino, exist_ok=True)
+        
+        dest_asset = os.path.join(pasta_destino, f"{nome_base}.txt")
+        
+        # Trocamos move por copy2: mantém o original e preserva metadados na cópia
+        shutil.copy2(filepath, dest_asset)
+        
+        if not is_rascunho:
+            print(f"[ABOBRINATOR] ✅ Transcrição copiada para: {dest_asset}")
+            print(f"[ABOBRINATOR] 📄 Arquivo original mantido em: {filepath}")
+        else:
+            print(f"[ABOBRINATOR] 📝 Modo Rascunho: Transcrição copiada para: {dest_asset}")
             print(f"[ABOBRINATOR] AVISO: O link no post aponta para o futuro arquivo {nome_base}.txt")
+            print(f"[ABOBRINATOR] 📄 Arquivo original mantido em: {filepath}")
 
     except Exception as e:
         print(f"[ABOBRINATOR] ERRO FATAL: {e}")
