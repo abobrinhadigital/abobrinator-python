@@ -70,7 +70,7 @@ chmod +x abobrinator-run.sh
 A partir daí, você é o mestre da linha de comando. O Abobrinator executa sob demanda e mantém a "Simetria Absoluta" (o arquivo `.md` e o `.txt` terão sempre o mesmo nome).
 
 **Opção 1: Gerar um Post Oficial**
-Você passa o caminho do arquivo de texto bruto. O Pollux processa, cria o Markdown perfeito na pasta `POSTS_DIR`, ajusta os links internos e move a sua transcrição renomeada para a pasta de arquivos mortos (`TRANSCRIPTION_DIR`).
+Você passa o caminho do arquivo de texto bruto. O Pollux processa, cria o Markdown perfeito na pasta `POSTS_DIR`, ajusta os links internos e copia a sua transcrição renomeada para a pasta de arquivos mortos (`TRANSCRIPTION_DIR`).
 ```bash
 ./abobrinator-run.sh ./PASTA_DO_AUDIO/seu_audio.txt
 ```
