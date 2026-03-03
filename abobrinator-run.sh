@@ -13,11 +13,6 @@ fi
 # Muda para o diretório base para garantir a leitura do .env pelo script
 cd "$BASE_DIR"
 
-# Verifica se o argumento do arquivo foi passado
-if [ -z "$1" ]; then
-    echo "Uso: $0 caminho/do/arquivo.txt [--rascunho]"
-    exit 1
-fi
-
-# Executa o abobrinator usando o python do venv diretamente e repassando os argumentos
+# Executa o abobrinator usando o python do venv diretamente
+# Repassa apenas flags opcionais (como --rascunho)
 "$PYTHON_VENV" abobrinator.py "$@"

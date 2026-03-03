@@ -43,6 +43,8 @@ TRANSCRIPTION_DIR="A_PASTA_DE_TRANSCRICOES"
 PROMPT_FILE="pollux_instructions.txt"
 DRAFTS_DIR="A_PASTA_DE_RASCUNHO"
 GEMINI_MODEL="NOME_DO_MODELO_ESCOLHIDO"
+TOMATEXTOR_NEW_DIR="PASTA_DE_NOVAS_TRANSCRICOES"
+TOMATEXTOR_HISTORY_DIR="PASTA_DE_HISTORICO_DO_TOMATEXTOR"
 ```
 
 6. **O Manual de Personalidade:**
@@ -69,17 +71,18 @@ chmod +x abobrinator-run.sh
 
 A partir daí, você é o mestre da linha de comando. O Abobrinator executa sob demanda e mantém a "Simetria Absoluta" (o arquivo `.md` e o `.txt` terão sempre o mesmo nome).
 
-**Opção 1: Gerar um Post Oficial**
-Você passa o caminho do arquivo de texto bruto. O Pollux processa, cria o Markdown perfeito na pasta `POSTS_DIR`, ajusta os links internos e copia a sua transcrição renomeada para a pasta de arquivos mortos (`TRANSCRIPTION_DIR`).
+O Abobrinator agora opera no modo "Piloto Automático", lendo todas as novidades da pasta configurada no seu `.env`.
+
+**Opção 1: Gerar um Post Oficial (Consolidado)**
+Ele lerá todos os arquivos na pasta `TOMATEXTOR_NEW_DIR`, criará o post e o asset, e moverá os originais para o histórico.
 ```bash
-./abobrinator-run.sh ./PASTA_DO_AUDIO/seu_audio.txt
+./abobrinator-run.sh
 ```
 
-**Opção 2: O Modo Rascunho (Segurança Máxima)**
-Não tem certeza se a ideia é boa? Adicione a flag `--rascunho`. 
-O Pollux vai gerar o Markdown com o nome definitivo, mas vai salvá-lo escondido na pasta `DRAFTS_DIR`. A sua transcrição original continuará intacta no lugar de origem. Se gostar do texto, basta mover o `.md` manualmente para `POSTS_DIR`!
+**Opção 2: O Modo Rascunho**
+A mesma lógica acima, mas salva na pasta `DRAFTS_DIR`.
 ```bash
-./abobrinator-run.sh ./textos_soltos/ideia_maluca.txt --rascunho
+./abobrinator-run.sh --rascunho
 ```
 
 ## Testes de Integridade (Contra o Azar)
