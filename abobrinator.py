@@ -49,9 +49,22 @@ def processar_arquivo(filepath, is_rascunho):
         # 1. Extração do Título e geração do Nome Base (Data + Slug)
         match_titulo = re.search(r'^title:\s*(.+)$', conteudo_md, flags=re.M)
         titulo = match_titulo.group(1).strip().strip('"').strip("'") if match_titulo else "caos-sem-titulo"
-        slug = re.sub(r'[^a-z0-9]+', '-', titulo.lower()).strip('-')
-        data_str = datetime.now().strftime("%Y-%m-%d")
+        
+        # Normalização para remover acentos
+        import unicodedata
+        titulo_normalizado = unicodedata.normalize('NFKD', titulo).encode('ascii', 'ignore').decode('ascii')
+        slug = re.sub(r'[^a-z0-9]+', '-', titulo_normalizado.lower()).strip('-')
+        
+        # Data e Fuso Horário
+        timezone_offset = os.getenv("TIMEZONE_OFFSET", "-0400")
+        data_atual = datetime.now()
+        data_str = data_atual.strftime("%Y-%m-%d")
+        data_completa_str = data_atual.strftime(f"%Y-%m-%d %H:%M:%S {timezone_offset}")
+        
         nome_base = f"{data_str}-{slug[:45]}"
+
+        # FORÇAR DATA NO FRONT MATTER (Garante simetria com o nome do arquivo e fuso correto)
+        conteudo_md = re.sub(r'^date:.*$', f'date: {data_completa_str}', conteudo_md, flags=re.M)
         
         # 2. A MÁGICA DA SIMETRIA: Força o link para o nome_base exato
         conteudo_md = re.sub(

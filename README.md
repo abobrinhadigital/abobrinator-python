@@ -82,6 +82,17 @@ O Pollux vai gerar o Markdown com o nome definitivo, mas vai salvá-lo escondido
 ./abobrinator-run.sh ./textos_soltos/ideia_maluca.txt --rascunho
 ```
 
+## Testes de Integridade (Contra o Azar)
+
+Para garantir que nenhuma mudança futura quebre o alicerce do blog, o projeto conta com uma suíte de testes unitários. Eles utilizam *mocks* para não gastar seus créditos do Gemini nem poluir suas pastas reais.
+
+Para rodar os testes, use o Python do ambiente virtual:
+```bash
+./venv/bin/python3 -m unittest test_abobrinator.py
+```
+
+Se tudo estiver sob controle, você verá um glorioso `OK` no final. Se não, Murphy venceu novamente.
+
 ## Avisos do Pollux
 
 - **Sem Choro:** Se você esquecer de preencher alguma variável no `.env`, o script vai falhar e eu vou rir da sua cara no terminal.
