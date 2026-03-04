@@ -1,6 +1,10 @@
-# Abobrinator CLI: O Tradutor de Caos do Marcelo
+# [LEGADO] Abobrinator CLI (Python Edition)
 
-Este é o braço armado da automação do blog **Abobrinha Digital**. O script captura as transcrições brutas (geradas pelo Whisper ou pela mente caótica do autor) e utiliza a inteligência, o sarcasmo e a paciência infinita de **Pollux** para gerar posts prontos para o Jekyll.
+> [!WARNING]
+> **PROJETO DEPRECIADO**
+> Este repositório (versão Python) foi oficialmente aposentado em favor da nova arquitetura purista escrita em Ruby. Nenhuma nova funcionalidade será adicionada aqui. Vá para o repositório principal `abobrinator` para a versão reluzente e atualizada.
+
+Este é o antigo braço armado da automação do blog **Abobrinha Digital**. O script capturava as transcrições brutas (geradas pelo Whisper ou pela mente caótica do autor) e utilizava a inteligência, o sarcasmo e a paciência infinita de **Pollux** para gerar posts prontos para o Jekyll.
 
 ## Requisitos de Sobrevivência
 
