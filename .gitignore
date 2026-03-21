@@ -8,3 +8,8 @@ venv/
 # Cache do Python (Arquivos temporários que o Python cria)
 __pycache__/
 *.py[cod]
+
+# Instruções da IA e configurações de agente
+AGENTS.md
+.cursorrules
+.copilot-instructions.md
